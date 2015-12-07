@@ -45,7 +45,7 @@ $ composer install
 
 Composer will automatically download your dependencies & create an autoload file in the ``vendor`` directory.
 
-## Autoload
+#### Autoload
 
 So easy, you just have to require the generated autoload file and you are already ready to play:
 
@@ -57,6 +57,7 @@ require __DIR__.'/vendor/autoload.php';
 use RequestLab\XitiAnalytics;
 
 // ...
+?>
 ```
 
 The RequestLab Xiti Analytics library follows the [PSR-0 Standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md).
@@ -64,7 +65,69 @@ If you prefer install it manually, it can be autoload by any convenient autoload
 
 ### Usage
 
-In progress ...
+#### Query
+
+First, in order to request the ATInternet Analytics Query service, simply create a request and configure it according to your needs:
+
+``` php
+<?php
+
+use RequestLab\XitiAnalytics\Query;
+
+$query = new Query();
+
+$query->setStartDate(new \DateTime('-1 Day'));
+$query->setEndDate(new \DateTime('-1 Day'));
+
+$query->setSpace(99999);
+$query->setColums(array('m_visits', 'm_page_loads'));
+$query->setSort(array('-m_visits'));
+
+?>
+```
+
+#### Client
+
+A client allows you to request the service with your login and password.
+
+``` php
+<?php
+
+use RequestLab\XitiAnalytics\Client;
+
+$client = new Client();
+$client->setLogin('Login');
+$client->setPassword('Password');
+
+?>
+```
+
+#### Service
+
+``` php
+<?php
+
+use RequestLab\XitiAnalytics\Service;
+
+$service = new Service($client);
+$client->query($query);
+
+?>
+```
+
+#### Response
+
+The response is a RequestLab\XitiAnalytics\Response object which wraps all available informations:
+
+``` php
+<?php
+
+$columns = $response->getColumns();
+$rows    = $response->getRows();
+$totals  = $response->getTotals();
+
+?>
+```
 
 ## Testing
 
