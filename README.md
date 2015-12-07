@@ -1,6 +1,6 @@
 # README
 
-[![Build Status](https://secure.travis-ci.org/requestlab/xiti-analytics.png)](http://travis-ci.org/requestlab/xiti-analytics)
+[![Build Status](https://travis-ci.org/RequestLab/xiti-analytics.svg)](http://travis-ci.org/RequestLab/xiti-analytics)
 
 ## Documentation
 
