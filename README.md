@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/RequestLab/xiti-analytics.svg)](http://travis-ci.org/RequestLab/xiti-analytics)
 
 The RequestLab Xiti Analytics library provides a way to use the AT Internet Analytics Data Query API.
-It's inpired by the [Wid'op Google Analytics library](https://github.com/widop/google-analytics)
+It's inspired by the [Wid'op Google Analytics library](https://github.com/widop/google-analytics)
 
 ## Documentation
 
