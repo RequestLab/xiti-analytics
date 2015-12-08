@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b5de4ecbf1987adfa2c588e84b472cd6",
-    "content-hash": "c546b76a4c139083b18ef934592a84cb",
+    "hash": "3367f0e370f7cd0cd49a30fe09f01544",
+    "content-hash": "e68189b51157645fde3f8834ef48050d",
     "packages": [
         {
             "name": "widop/http-adapter",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/widop/http-adapter.git",
-                "reference": "0a30815a70de92e24d9c08af4494730a25cad5d2"
+                "reference": "9f21040064d290cc70db4affe3191828f419f5af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/widop/http-adapter/zipball/0a30815a70de92e24d9c08af4494730a25cad5d2",
-                "reference": "0a30815a70de92e24d9c08af4494730a25cad5d2",
+                "url": "https://api.github.com/repos/widop/http-adapter/zipball/9f21040064d290cc70db4affe3191828f419f5af",
+                "reference": "9f21040064d290cc70db4affe3191828f419f5af",
                 "shasum": ""
             },
             "require": {
@@ -40,7 +40,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "1.1-dev"
                 }
             },
             "autoload": {
@@ -67,7 +67,7 @@
                 "http",
                 "request"
             ],
-            "time": "2013-10-30 15:38:45"
+            "time": "2014-07-20 18:29:58"
         }
     ],
     "packages-dev": [
@@ -666,23 +666,23 @@
         },
         {
             "name": "sebastian/diff",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "2b0112e42c338afa9ad9dfeb94d66f6d84c2f828"
+                "reference": "13edfd8706462032c2f52b4b862974dd46b71c9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/2b0112e42c338afa9ad9dfeb94d66f6d84c2f828",
-                "reference": "2b0112e42c338afa9ad9dfeb94d66f6d84c2f828",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/13edfd8706462032c2f52b4b862974dd46b71c9e",
+                "reference": "13edfd8706462032c2f52b4b862974dd46b71c9e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "~5"
+                "phpunit/phpunit": "~4.8"
             },
             "type": "library",
             "extra": {
@@ -714,7 +714,7 @@
             "keywords": [
                 "diff"
             ],
-            "time": "2015-12-06 07:21:36"
+            "time": "2015-12-08 07:14:41"
         },
         {
             "name": "sebastian/environment",
