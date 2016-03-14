@@ -81,7 +81,7 @@ $query->setStartDate(new \DateTime('-1 Day'));
 $query->setEndDate(new \DateTime('-1 Day'));
 
 $query->setSpace(99999);
-$query->setColums(array('m_visits', 'm_page_loads'));
+$query->setColumns(array('m_visits', 'm_page_loads'));
 $query->setSort(array('-m_visits'));
 
 ?>
