@@ -84,7 +84,7 @@ class QueryTest extends \PHPUnit_Framework_TestCase
 
     public function testColumns()
     {
-        $columns = array('m_visits', 'm_page_loads');
+        $columns = '{m_visits,m_page_loads}';
         $this->query->setColumns($columns);
         $this->assertSame($columns, $this->query->getColumns());
     }
@@ -166,10 +166,12 @@ class QueryTest extends \PHPUnit_Framework_TestCase
 
     public function testBuild()
     {
-        $this->query->setColumns(array('m_visits', 'm_page_loads'));
+        $startDate = new \DateTime('2015-08-02');
+        $endDate = new \DateTime('2015-08-02');
+        $this->query->setColumns('{m_visits,m_page_loads}');
         $this->query->setSpace('475905');
-        $this->query->setStartDate($startDate = new \DateTime('2015-08-02'));
-        $this->query->setEndDate($endDate = new \DateTime('2015-08-02'));
+        $this->query->setStartDate($startDate);
+        $this->query->setEndDate($endDate);
         $this->query->setMaxResults(10000);
         $this->query->setPageNum(1);
         $this->query->setLng('fr');
