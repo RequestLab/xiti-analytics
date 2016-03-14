@@ -48,7 +48,7 @@ class Query
     /**
      * Liste des dimensions / métrique à récupérer
      *
-     * @var array
+     * @var string
      */
     protected $columns;
 
@@ -121,14 +121,6 @@ class Query
      * @var
      */
     protected $include = 'total:displayed';
-
-    /**
-     * Query constructor.
-     */
-    public function __construct()
-    {
-        $this->columns = array();
-    }
 
     /**
      * @return mixed
@@ -229,7 +221,7 @@ class Query
     }
 
     /**
-     * @param array $columns
+     * @param string $columns
      */
     public function setColumns($columns)
     {
@@ -237,7 +229,7 @@ class Query
     }
 
     /**
-     * @return array
+     * @return string
      */
     public function getSort()
     {
@@ -245,7 +237,7 @@ class Query
     }
 
     /**
-     * @param array $sort
+     * @param string $sort
      */
     public function setSort($sort)
     {
@@ -260,7 +252,7 @@ class Query
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getFilter()
     {
@@ -268,7 +260,7 @@ class Query
     }
 
     /**
-     * @param mixed $filter
+     * @param string $filter
      */
     public function setFilter($filter)
     {
@@ -284,7 +276,7 @@ class Query
     }
 
     /**
-     * @return mixed
+     * @return integer
      */
     public function getPageNum()
     {
@@ -292,7 +284,7 @@ class Query
     }
 
     /**
-     * @param mixed $pageNum
+     * @param integer $pageNum
      */
     public function setPageNum($pageNum)
     {
@@ -300,7 +292,7 @@ class Query
     }
 
     /**
-     * @return mixed
+     * @return integer
      */
     public function getMaxResults()
     {
@@ -308,7 +300,7 @@ class Query
     }
 
     /**
-     * @param mixed $maxResults
+     * @param integer $maxResults
      */
     public function setMaxResults($maxResults)
     {
@@ -438,27 +430,17 @@ class Query
     }
 
     /**
-     * @param string $columns
-     * @return array
-     */
-    public function prepareArray($columns)
-    {
-        return explode(',', preg_replace('/\s/', '', $columns));
-    }
-
-    /**
      * @return string
      */
     public function build()
     {
-        $query = array(
-            'columns' => sprintf('{%s}', implode(',', $this->getColumns())),
-        );
+        $query = [
+            'columns' => $this->getColumns(),
+        ];
+        $query['space'] = sprintf('{s:%s}', $this->getSpace());
 
         if ($this->hasL2()) {
             $query['space'] = sprintf('{l2s:{s:%s,l2:%s}}', $this->getSpace(), $this->getL2());
-        } else {
-            $query['space'] = sprintf('{s:%s}', $this->getSpace());
         }
 
         if ($this->hasSegment()) {
@@ -469,10 +451,9 @@ class Query
             $query['code'] = $this->getCode();
         }
 
+        $query['period'] = "{R:{D:'-1'}}";
         if ($this->hasStartDate() && $this->hasEndDate()) {
             $query['period'] = sprintf("{D:{start:'%s',end:'%s'}}", $this->getStartDate()->format('Y-m-d'), $this->getEndDate()->format('Y-m-d'));
-        } else {
-            $query['period'] = "{R:{D:'-1'}}";
         }
 
         if ($this->hasFilter()) {
@@ -486,9 +467,7 @@ class Query
             $query['include'] = sprintf('{%s}', $this->getInclude());
         }
 
-        // $query['sep']         = $this->getSep();
         $query['lng']         = $this->getLng();
-
 
         return sprintf('%s?%s', self::URL, http_build_query($query));
     }
